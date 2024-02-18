@@ -35,7 +35,7 @@ impl PieceTable {
         PieceTable { original, add, pieces }
     }
 
-    pub  fn char_at(&self, offset: usize) -> Option<char> {
+    pub fn char_at(&self, offset: usize) -> Option<char> {
         if let Some((piece, _index, running_total)) = self.piece_at(offset) {
             let content = match piece.buffer {
                 Buffer::Original => self.original.chars().nth(piece.offset + offset - running_total),
@@ -46,7 +46,7 @@ impl PieceTable {
         None
     }
 
-    pub  fn piece_at(&self, offset: usize) -> Option<(Piece, usize, usize)> {
+    pub fn piece_at(&self, offset: usize) -> Option<(Piece, usize, usize)> {
         let mut running_total = 0;
 
         for (index, piece) in self.pieces.iter().enumerate() {
@@ -62,7 +62,7 @@ impl PieceTable {
         None
     }
 
-    pub  fn insert(&mut self, offset: usize, content: &str) {
+    pub fn insert(&mut self, offset: usize, content: &str) {
         let total_length = self.length();
 
         if content.is_empty() {
@@ -107,7 +107,7 @@ impl PieceTable {
         }
     }
 
-    pub  fn delete(&mut self, offset: usize, length: usize) {
+    pub fn delete(&mut self, offset: usize, length: usize) {
         let total_length = self.length();
 
         if total_length < length && offset == 0 {
@@ -139,7 +139,7 @@ impl PieceTable {
             } else if delete_range.contains(&piece_end) {
                 piece.length = delete_range.start;
                 return true;
-            } else if  delete_range.start > piece_start && delete_range.end < piece_end {
+            } else if delete_range.start > piece_start && delete_range.end < piece_end {
                 split = true;
                 return true;
             }
@@ -166,7 +166,7 @@ impl PieceTable {
         }
     }
 
-    pub  fn length(&self) -> usize {
+    pub fn length(&self) -> usize {
         let mut length = 0;
         for piece in &self.pieces {
             length += piece.length;
