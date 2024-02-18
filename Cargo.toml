@@ -1,6 +1,6 @@
 [package]
 name = "piece_table_rs"
-version = "0.1.3"
+version = "0.1.4"
 edition = "2021"
 authors = ["linket <t.linke@pripares.com>"]
 description = "piece table data structure"
