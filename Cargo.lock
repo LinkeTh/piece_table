@@ -3,5 +3,5 @@
 version = 3
 
 [[package]]
-name = "piece_table"
-version = "0.1.0"
+name = "piece_table_rs"
+version = "0.1.3"
